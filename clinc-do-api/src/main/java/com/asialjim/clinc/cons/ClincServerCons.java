@@ -17,5 +17,5 @@
 package com.asialjim.clinc.cons;
 
 public interface ClincServerCons {
-    String APP_FEIGN_NAME = "${feign.domain.clinc.service}";
+    String APP_FEIGN_NAME = "${feign.clinc.domain}";
 }
