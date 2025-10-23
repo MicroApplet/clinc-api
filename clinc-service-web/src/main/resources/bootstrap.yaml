@@ -3,7 +3,7 @@ server:
 
 spring:
   application:
-    name: clincservice
+    name: clinc_service
   config:
     import:
       - nacos:feign.yaml
