@@ -20,6 +20,7 @@ import com.asialjim.clinc.api.PrescriptionRecordApi;
 import com.asialjim.microapplet.common.security.MamsSession;
 import com.asialjim.microapplet.common.security.MamsSessionAttribute;
 import com.asialjim.microapplet.commons.security.RoleCode;
+import com.asialjim.microapplet.mams.user.api.UserApi;
 import org.springframework.stereotype.Component;
 
 import java.util.List;
@@ -33,14 +34,12 @@ import java.util.List;
  */
 @Component
 public class PhoneUserPrescriptionReminder extends BasePrescriptionReminder {
-    private final MamsSessionAttribute mamsSessionAttribute;
 
-    public PhoneUserPrescriptionReminder(
-            MamsSessionAttribute mamsSessionAttribute,
-            PrescriptionRecordApi prescriptionRecordApi) {
+    public PhoneUserPrescriptionReminder(MamsSessionAttribute mamsSessionAttribute,
+                                         PrescriptionRecordApi prescriptionRecordApi,
+                                         UserApi userApi) {
 
-        super(prescriptionRecordApi);
-        this.mamsSessionAttribute = mamsSessionAttribute;
+        super(mamsSessionAttribute, prescriptionRecordApi, userApi);
     }
 
     @Override

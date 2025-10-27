@@ -36,6 +36,7 @@ public class PrescriptionRecordVo implements Serializable {
 
     @Serial
     private static final long serialVersionUID = 8898525677904068895L;
+    private String userid;
     private LocalDate visitDate;
     private Integer preDays;
     private LocalDate nextVisitDate;

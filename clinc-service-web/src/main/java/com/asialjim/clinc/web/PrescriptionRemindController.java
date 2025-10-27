@@ -42,6 +42,19 @@ import org.springframework.web.bind.annotation.RestController;
 public class PrescriptionRemindController {
     private final PrescriptionRemindService prescriptionRemindService;
 
+    /**
+     * 获取当前用户具有查询权限的就诊提醒记录
+     * @apiNote 当用户是手机号用户时，只能查询自己的提醒记录，当用户时专业用户时可以查询所有记录或者根据姓名、证件号、手机号查询记录
+	 * @param page {@link Long 分页参数：页码}
+	 * @param size {@link Long 分页参数：页大小}
+	 * @param name {@link String 姓名}
+	 * @param idNo {@link String 证件号}
+	 * @param phone {@link String 手机号}
+     * @return {@link PageData<PrescriptionRemindVo> }
+     * @since 2025/10/24
+     * @ignoreResponseBodyAdvice
+     * @response {"status": 200,"thr": false,"pageable": false,"code": "0","msg": "ok","data":  [{"lastDate": "yyyy-MM-dd","lastDays": 0,"nextDate": "yyyy-MM-dd","phone": ""}]"errs": [""],"page": 1,"size": 10,"pages": 10,"total": 100}
+     */
     @GetMapping("/list")
     @RoleNeed(any = {RoleCode.PHONE_BIT, ClincRoleCode.NURSE_BIT, ClincRoleCode.DOCTOR_BIT})
     public PageData<PrescriptionRemindVo> list(

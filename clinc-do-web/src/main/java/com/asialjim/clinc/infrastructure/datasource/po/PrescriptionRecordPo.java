@@ -69,6 +69,7 @@ public class PrescriptionRecordPo implements Serializable {
             return null;
 
         PrescriptionRecordVo vo = new PrescriptionRecordVo();
+        vo.setUserid(po.getUserid());
         vo.setVisitDate(po.getVisitDate());
         vo.setPreDays(po.getPreDays());
         vo.setNextVisitDate(po.getNextVisitDate());

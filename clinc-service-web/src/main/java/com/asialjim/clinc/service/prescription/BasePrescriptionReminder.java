@@ -21,7 +21,10 @@ import com.asialjim.clinc.vo.PrescriptionRecordVo;
 import com.asialjim.clinc.vo.PrescriptionRemindVo;
 import com.asialjim.clinc.vo.QueryLastPrescriptionRecordReq;
 import com.asialjim.microapplet.common.page.PageData;
+import com.asialjim.microapplet.common.security.MamsSession;
+import com.asialjim.microapplet.common.security.MamsSessionAttribute;
 import com.asialjim.microapplet.commons.security.RoleCode;
+import com.asialjim.microapplet.mams.user.api.UserApi;
 import lombok.RequiredArgsConstructor;
 
 import java.util.ArrayList;
@@ -36,7 +39,9 @@ import java.util.List;
  */
 @RequiredArgsConstructor
 public abstract class BasePrescriptionReminder implements Comparable<BasePrescriptionReminder> {
-    private final PrescriptionRecordApi prescriptionRecordApi;
+    protected final MamsSessionAttribute mamsSessionAttribute;
+    protected final PrescriptionRecordApi prescriptionRecordApi;
+    protected final UserApi userApi;
 
     public boolean support(long role) {
         return RoleCode.contains(role, roleBit());
@@ -63,17 +68,30 @@ public abstract class BasePrescriptionReminder implements Comparable<BasePrescri
         final List<String> nurseList = new ArrayList<>();
         beforeQuery(name, idNo, phone, useridList, doctorList, nurseList);
 
+
         final QueryLastPrescriptionRecordReq req = new QueryLastPrescriptionRecordReq();
         req.setUseridList(useridList);
         req.setDoctorIdList(doctorList);
         req.setNurseIdList(nurseList);
 
-        PageData<PrescriptionRecordVo> records = this.prescriptionRecordApi.queryLastRecord(page, size, req);
+        final PageData<PrescriptionRecordVo> records = this.prescriptionRecordApi.queryLastRecord(page, size, req);
+
+        final MamsSession currentLoginSession = this.mamsSessionAttribute.currentLoginSession();
+
         return PageData.of(records, item -> {
             PrescriptionRemindVo vo = new PrescriptionRemindVo();
             vo.setLastDate(item.getVisitDate());
             vo.setLastDays(item.getPreDays());
             vo.setNextDate(item.getNextVisitDate());
+            String userid = item.getUserid();
+            final MamsSession mamsSession = new MamsSession();
+            mamsSession.setUserid(userid);
+            mamsSession.setChl(currentLoginSession.getChl());
+            mamsSession.setAppid(currentLoginSession.getAppid());
+            mamsSession.setChlAppid(currentLoginSession.getChlAppid());
+            mamsSession.setChlAppType(currentLoginSession.getChlAppType());
+            String userPhone = this.userApi.userPhone(mamsSession);
+            vo.setPhone(userPhone);
             return vo;
         });
     }

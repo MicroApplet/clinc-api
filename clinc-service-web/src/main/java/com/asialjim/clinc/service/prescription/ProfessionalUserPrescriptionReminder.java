@@ -25,6 +25,7 @@ import com.asialjim.microapplet.mams.app.cons.ChannelAppType;
 import com.asialjim.microapplet.mams.app.cons.ChannelType;
 import com.asialjim.microapplet.mams.user.api.ChlUserApi;
 import com.asialjim.microapplet.mams.user.api.IdCardUserApi;
+import com.asialjim.microapplet.mams.user.api.UserApi;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.stereotype.Component;
 
@@ -39,7 +40,6 @@ import java.util.List;
  */
 @Component
 public class ProfessionalUserPrescriptionReminder extends BasePrescriptionReminder {
-    private final MamsSessionAttribute mamsSessionAttribute;
     private final IdCardUserApi idCardUserApi;
     private final ChlUserApi chlUserApi;
 
@@ -47,10 +47,11 @@ public class ProfessionalUserPrescriptionReminder extends BasePrescriptionRemind
             PrescriptionRecordApi prescriptionRecordApi,
             IdCardUserApi idCardUserApi,
             ChlUserApi chlUserApi,
+            UserApi userApi,
             MamsSessionAttribute mamsSessionAttribute) {
-        super(prescriptionRecordApi);
+
+        super(mamsSessionAttribute, prescriptionRecordApi, userApi);
         this.idCardUserApi = idCardUserApi;
-        this.mamsSessionAttribute = mamsSessionAttribute;
         this.chlUserApi = chlUserApi;
     }
 

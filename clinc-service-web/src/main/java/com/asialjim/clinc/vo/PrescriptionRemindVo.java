@@ -48,5 +48,8 @@ public class PrescriptionRemindVo implements Serializable {
      * 下次日期
      */
     private LocalDate nextDate;
+    /**
+     * 用户手机号
+     */
     private String phone;
 }

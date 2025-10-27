@@ -22,7 +22,9 @@ import com.asialjim.clinc.vo.PrescriptionRecordVo;
 import com.asialjim.clinc.vo.QueryLastPrescriptionRecordReq;
 import com.asialjim.microapplet.common.page.PageData;
 import lombok.RequiredArgsConstructor;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 /**
@@ -39,10 +41,10 @@ public class PrescriptionRecordController implements PrescriptionRecordApi {
     private final PrescriptionRecordService prescriptionRecordService;
 
 
-
-
     @Override
-    public PageData<PrescriptionRecordVo> queryLastRecord(Long page, Long size, QueryLastPrescriptionRecordReq req) {
-        return this.prescriptionRecordService.queryLastRecord(page,size,req);
+    public PageData<PrescriptionRecordVo> queryLastRecord(@RequestParam(required = false, defaultValue = "1") Long page,
+                                                          @RequestParam(required = false, defaultValue = "5") Long size,
+                                                          @RequestBody QueryLastPrescriptionRecordReq req) {
+        return this.prescriptionRecordService.queryLastRecord(page, size, req);
     }
 }

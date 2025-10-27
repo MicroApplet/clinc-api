@@ -51,6 +51,11 @@
             <artifactId>user-do-cloud</artifactId>
             <version>${project.version}</version>
         </dependency>
+        <dependency>
+            <groupId>com.asialjim.microapplet.mams</groupId>
+            <artifactId>user-auth-cloud</artifactId>
+            <version>${project.version}</version>
+        </dependency>
 
         <dependency>
             <groupId>com.asialjim.microapplet</groupId>
@@ -76,6 +81,7 @@
             <groupId>com.asialjim.microapplet</groupId>
             <artifactId>commons-security-core</artifactId>
         </dependency>
+
 
         <dependency>
             <groupId>com.zaxxer</groupId>
