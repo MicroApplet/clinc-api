@@ -16,7 +16,6 @@
 
 package com.asialjim.clinc.cons;
 
-import com.asialjim.microapplet.commons.security.RoleCode;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 

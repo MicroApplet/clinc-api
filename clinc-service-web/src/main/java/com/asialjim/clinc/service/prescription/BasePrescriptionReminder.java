@@ -23,7 +23,6 @@ import com.asialjim.clinc.vo.QueryLastPrescriptionRecordReq;
 import com.asialjim.microapplet.common.page.PageData;
 import com.asialjim.microapplet.common.security.MamsSession;
 import com.asialjim.microapplet.common.security.MamsSessionAttribute;
-import com.asialjim.microapplet.commons.security.RoleCode;
 import com.asialjim.microapplet.mams.user.api.UserApi;
 import lombok.RequiredArgsConstructor;
 

@@ -19,7 +19,6 @@ package com.asialjim.clinc.service.prescription;
 import com.asialjim.clinc.api.PrescriptionRecordApi;
 import com.asialjim.microapplet.common.security.MamsSession;
 import com.asialjim.microapplet.common.security.MamsSessionAttribute;
-import com.asialjim.microapplet.commons.security.RoleCode;
 import com.asialjim.microapplet.mams.user.api.UserApi;
 import org.springframework.stereotype.Component;
 

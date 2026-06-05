@@ -20,7 +20,6 @@ import com.asialjim.clinc.api.PrescriptionRecordApi;
 import com.asialjim.clinc.cons.ClincRoleCode;
 import com.asialjim.microapplet.common.security.MamsSession;
 import com.asialjim.microapplet.common.security.MamsSessionAttribute;
-import com.asialjim.microapplet.commons.security.RoleCode;
 import com.asialjim.microapplet.mams.app.cons.ChannelAppType;
 import com.asialjim.microapplet.mams.app.cons.ChannelType;
 import com.asialjim.microapplet.mams.user.api.ChlUserApi;
