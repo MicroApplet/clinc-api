@@ -27,18 +27,14 @@
 
     <groupId>com.asialjim.clinc</groupId>
     <artifactId>clinc</artifactId>
-    <version>3.0.0-SNAPSHOT</version>
+    <version>4.0.0-SNAPSHOT</version>
     <name>Clinc Api</name>
 
     <description>Clinc Base on Micro Bank</description>
     <url>https://gitee.com/micro-bank/clinc-api</url>
 
     <modules>
-        <module>clinc-do-api</module>
-        <module>clinc-do-cloud</module>
-        <module>clinc-do-web</module>
-        <module>clinc-admin-web</module>
-        <module>clinc-service-web</module>
+
     </modules>
 
     <packaging>pom</packaging>
