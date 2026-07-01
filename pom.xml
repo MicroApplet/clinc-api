@@ -37,7 +37,6 @@
         <module>clinc-do-api</module>
         <module>clinc-do-cloud</module>
         <module>clinc-do-web</module>
-        <module>clinc-admin-web</module>
         <module>clinc-service-web</module>
     </modules>
 
